@@ -26,7 +26,7 @@ in
 rec {
   tests = lib.listToAttrs (map mkTestJob (import ./tests/all-tests.nix));
 
-  iso = import lib/make-iso.nix { inherit nixpkgs system holoport nixpkgsVersionSuffix; };
+  image = import lib/make-iso.nix { inherit nixpkgs system holoport nixpkgsVersionSuffix; };
 
   channels.nixpkgs = import "${nixpkgs}/nixos/lib/make-channel.nix" {
     inherit pkgs nixpkgs;
@@ -59,7 +59,7 @@ rec {
       description = "Release-critical builds for holoportOS";
     };
     constituents = [
-      iso
+      image
       channels.nixpkgs
       channels.holoport
     ] ++ (lib.attrValues tests);
