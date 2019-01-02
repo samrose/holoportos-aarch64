@@ -3,7 +3,7 @@
 (import "${nixpkgs}/nixos/lib/eval-config.nix" {
   inherit system;
   modules = [
-    "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+    "${nixpkgs}/nixos/modules/installer/cd-dvd/sd-image-aarch64.nix"
 
     # These modules are needed to inject the correct nixos version from Hydra
     ../modules/base.nix
@@ -11,7 +11,6 @@
 
     # The custom config for our install iso
     ({ pkgs, ... }: {
-      isoImage.isoBaseName = "holoportos";
       holoport.versionSuffix = ".${toString holoport.revCount}.${holoport.shortRev}";
       holoport.revision = holoport.rev or holoport.shortRev;
 
@@ -33,4 +32,4 @@
         '');
     })
   ];
-}).config.system.build.isoImage
+}).config.system.build.sdImage
