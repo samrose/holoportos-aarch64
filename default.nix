@@ -1,5 +1,5 @@
 { holoport ? { outPath = ./.; revCount = 0; shortRev = "master"; }
-, nixpkgs ? { outPath = <nixpkgs>;
+, nixpkgs ? { outPath = fetchTarball "https://github.com/NixOS/nixpkgs-channels/archive/nixos-18.09.tar.gz";
               revCount = 0; shortRev = "latest"; }
 , system ? "aarch64-linux"
 }:
@@ -28,6 +28,11 @@ rec {
 
   image = import lib/make-image.nix { inherit nixpkgs system holoport nixpkgsVersionSuffix; };
 
+  channels.nixpkgs = import "${nixpkgs}/nixos/lib/make-channel.nix" {
+    inherit pkgs nixpkgs;
+    version = nixpkgsVersion;
+    versionSuffix = nixpkgsVersionSuffix;
+  };
 
   channels.holoport = pkgs.releaseTools.makeSourceTarball {
     name = "holoport-channel";
@@ -49,12 +54,13 @@ rec {
   };
 
   tested = lib.hydraJob (pkgs.releaseTools.aggregate {
-    name = "nixos-${channels.nixpkgs.version}+holoport-aarch64-${channels.holoport.version}";
+    name = "nixos-${channels.nixpkgs.version}+holoport-${channels.holoport.version}";
     meta = {
       description = "Release-critical builds for holoportOS";
     };
     constituents = [
       image
+      channels.nixpkgs
       channels.holoport
     ] ++ (lib.attrValues tests);
   });
