@@ -1,5 +1,5 @@
 { holoport ? { outPath = ./.; revCount = 0; shortRev = "master"; }
-, nixpkgs ? { outPath = fetchTarball "/root/nixos-18.09.tar.gz";
+, nixpkgs ? { outPath = <nixpkgs>;
               revCount = 0; shortRev = "latest"; }
 , system ? "aarch64-linux"
 }:
