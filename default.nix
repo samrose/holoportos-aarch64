@@ -32,6 +32,10 @@ rec {
     inherit pkgs nixpkgs;
     version = nixpkgsVersion;
     versionSuffix = nixpkgsVersionSuffix;
+    meta = {
+      description = "Release-critical builds for holoportOS";
+    };
+
   };
 
   channels.holoport = pkgs.releaseTools.makeSourceTarball {
