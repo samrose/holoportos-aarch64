@@ -28,11 +28,6 @@ rec {
 
   image = import lib/make-image.nix { inherit nixpkgs system holoport nixpkgsVersionSuffix; };
 
-  channels.nixpkgs = import "${nixpkgs}/nixos/lib/make-channel.nix" {
-    inherit pkgs nixpkgs;
-    version = nixpkgsVersion;
-    versionSuffix = nixpkgsVersionSuffix;
-  };
 
   channels.holoport = pkgs.releaseTools.makeSourceTarball {
     name = "holoport-channel";
@@ -54,13 +49,12 @@ rec {
   };
 
   tested = lib.hydraJob (pkgs.releaseTools.aggregate {
-    name = "nixos-${channels.nixpkgs.version}+holoport-${channels.holoport.version}";
+    name = "nixos-${channels.nixpkgs.version}+holoport-aarch64-${channels.holoport.version}";
     meta = {
       description = "Release-critical builds for holoportOS";
     };
     constituents = [
       image
-      channels.nixpkgs
       channels.holoport
     ] ++ (lib.attrValues tests);
   });
