@@ -19,7 +19,7 @@ in
     holoport.channels.nixpkgs = mkOption {
       type = types.str;
       # FIXME: final url
-      default = "http://nanobuild.holo.host/job/holoportOS/master/channels.nixpkgs/latest/download/1";
+      default = "http://nanobuild.holo.host/job/holoportOs-aarch64/master/channels.nixpkgs/latest/download/1";
       description = ''
         URL understood by Nix to a nixpkgs/NixOS channel
       '';
@@ -28,7 +28,7 @@ in
     holoport.channels.holoport = mkOption {
       type = types.str;
       # FIXME: final url
-      default = "http://nanobuild.holo.host/job/holoportOS/master/channels.holoport/latest/download/1";
+      default = "http://nanobuild.holo.host/job/holoportOs-aarch64/master/channels.holoport/latest/download/1";
       description = ''
         URL understood by Nix to the Holoport channel
       '';
