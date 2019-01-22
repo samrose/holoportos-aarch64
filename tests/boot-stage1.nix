@@ -1,4 +1,4 @@
-import ./make-test.nix ({ pkgs, ... }: {
+{ pkgs, ... }: {
   name = "boot-stage1";
 
   machine = { config, pkgs, lib, ... }: {
@@ -159,4 +159,4 @@ import ./make-test.nix ({ pkgs, ... }: {
   '';
 
   meta.maintainers = with pkgs.stdenv.lib.maintainers; [ aszlig ];
-})
+}
