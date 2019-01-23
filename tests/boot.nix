@@ -9,7 +9,6 @@
 
   testScript =
     ''
-      startAll;
       $machine->waitForUnit("multi-user.target");
       $machine->shutdown;
     '';

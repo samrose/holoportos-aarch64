@@ -1,3 +1,3 @@
 [
-  ./boot-stage1.nix
+  ./boot.nix
 ]
