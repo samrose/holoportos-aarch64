@@ -8,7 +8,7 @@ let
 
   pkgs = import nixpkgs { inherit system; };
   lib = pkgs.lib;
-
+  pkgs.config.allowUnfree = true;
   nixpkgsVersion = lib.fileContents "${nixpkgs}/.version";
   nixpkgsVersionSuffix = ".${toString nixpkgs.revCount}.${nixpkgs.shortRev}";
 
