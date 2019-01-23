@@ -2,7 +2,7 @@
   name = "boot-stage1";
 
   machine = { config, pkgs, lib, ... }: {
-    imports = import ../modules/module-list.nix;
+    #imports = import ../modules/module-list.nix;
     boot.extraModulePackages = let
       compileKernelModule = name: source: pkgs.runCommandCC name rec {
         inherit source;
