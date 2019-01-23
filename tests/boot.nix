@@ -1,10 +1,10 @@
-{ pkgs, config, ...}:
+{ pkgs, ...}:
 
 {
   name = "boot";
 
   machine = { ... }: {
-    imports = import ../modules/module-list.nix;
+    #imports = import ../modules/module-list.nix;
     config.allowUnfree = true;
   };
 
