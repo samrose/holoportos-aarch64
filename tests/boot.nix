@@ -6,6 +6,7 @@
   machine = { ... }: {
     imports = import ../modules/module-list.nix;
     #config.allowUnfree = true;
+    pks.config.allowUnfree = true;
   };
 
   testScript =
