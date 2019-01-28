@@ -9,5 +9,4 @@
 
   programs.bash.enableCompletion = true;
   programs.command-not-found.enable = false;
-  nixpkgs.oraclejdk.accept_license = true;
 }
