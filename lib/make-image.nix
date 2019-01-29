@@ -26,7 +26,7 @@
       environment.variables.NIXOS_CONFIG =
         toString (pkgs.writeText "holoport-configuration.nix" ''
           {
-            imports = [ "/etc/nixos/configuration.nix" ]
+            imports = [ "/mnt/etc/nixos/configuration.nix" ]
               ++ (import "${pkgs.holoportModules}/modules/module-list.nix");
           }
         '');
