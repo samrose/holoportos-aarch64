@@ -6,7 +6,6 @@
     vim
     htop
     nmap
-    emacs
   ];
 
   programs.bash.enableCompletion = true;
