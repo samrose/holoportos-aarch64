@@ -5,6 +5,7 @@
     git
     vim
     htop
+    nmap
   ];
 
   programs.bash.enableCompletion = true;
